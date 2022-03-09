@@ -20,7 +20,6 @@ export function Wallet() {
   const [balance, setBalance] = useState<any>(null)
 
   const onClick = () => {
-    console.log('Clicked')
     activate(injectedConnector)
   }
 
@@ -32,7 +31,7 @@ export function Wallet() {
           )}`
         : ''
     )
-  }, [account])
+  }, [account, active])
 
   useEffect((): any => {
     if (!!account && !!library) {

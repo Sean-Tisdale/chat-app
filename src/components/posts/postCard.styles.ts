@@ -8,6 +8,7 @@ export const Post = styled.div`
   height: 20vh;
   width: 40vw;
   border-radius: 15px;
+  display: ${(props: { display: any }) => (props.display ? '' : 'none')};
 `
 export const PostInputWrapper = styled.div`
   display: flex;
@@ -35,6 +36,7 @@ export const NewPostWrapper = styled.div`
   width: 40vw;
   border-radius: 35px;
   display: flex;
+  display: ${(props: { display: any }) => (props.display ? '' : 'none')};
 `
 export const GiveMoodButton = styled.div`
   cursor: pointer;

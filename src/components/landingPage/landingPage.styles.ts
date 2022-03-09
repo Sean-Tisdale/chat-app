@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { Link, Route } from 'react-router-dom'
 import styled from 'styled-components'
 
 export const LinkWrapper = styled.div`
@@ -15,14 +15,15 @@ export const StyledLink = styled(Link)`
   line-height: 70px;
   border-radius: 50%;
   text-decoration: none;
+  display: ${(props: { display: any }) => (props.display ? '' : 'none')};
 `
-export const LogoutButton = styled.button`
+export const LogoutButton = styled(Link)`
   background-color: red;
   color: white;
-  font-size: 0.8em;
+  font-size: 1em;
   height: 70px;
   width: 70px;
-  border: none;
+  line-height: 70px;
   border-radius: 50%;
   text-decoration: none;
   cursor: pointer;

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import {
   Post,
   PostInput,
@@ -10,10 +10,17 @@ import {
   GiveMoodButton,
 } from './postCard.styles'
 import { useC } from '../../lib/hooks/useC'
+import { useWeb3React } from '@web3-react/core'
 
 const PostCard = () => {
+  const { chainId, account, activate, active, library, deactivate } =
+    useWeb3React()
   const { addPost } = useC()
-  const [content, setContent] = React.useState<string>('')
+  const [content, setContent] = useState<string>('')
+  const [display, setDisplay] = useState<boolean>(false)
+  useEffect(() => {
+    active ? setDisplay(true) : setDisplay(false)
+  }, [active])
 
   const handlePost = async (e: any) => {
     e.preventDefault()
@@ -27,7 +34,7 @@ const PostCard = () => {
 
   return (
     <>
-      <Post>
+      <Post display={display}>
         <PostInputWrapper>
           <PostInput
             placeholder="Add Post"
@@ -37,7 +44,7 @@ const PostCard = () => {
           <PostButton onClick={handlePost}>Create Post</PostButton>
         </PostInputWrapper>
       </Post>
-      <NewPostWrapper>
+      <NewPostWrapper display={display}>
         <GiveMoodButton>Give Mood</GiveMoodButton>
         <NewPost>
           Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptates
@@ -47,7 +54,7 @@ const PostCard = () => {
         </NewPost>
         <PostNumber>1</PostNumber>
       </NewPostWrapper>
-      <NewPostWrapper>
+      <NewPostWrapper display={display}>
         <GiveMoodButton>Give Mood</GiveMoodButton>
         <NewPost>
           Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptates
@@ -57,7 +64,7 @@ const PostCard = () => {
         </NewPost>
         <PostNumber>2</PostNumber>
       </NewPostWrapper>{' '}
-      <NewPostWrapper>
+      <NewPostWrapper display={display}>
         <GiveMoodButton>Give Mood</GiveMoodButton>
         <NewPost>
           Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptates
@@ -67,7 +74,7 @@ const PostCard = () => {
         </NewPost>
         <PostNumber>3</PostNumber>
       </NewPostWrapper>{' '}
-      <NewPostWrapper>
+      <NewPostWrapper display={display}>
         <GiveMoodButton>Give Mood</GiveMoodButton>
         <NewPost>
           Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptates
@@ -77,7 +84,7 @@ const PostCard = () => {
         </NewPost>
         <PostNumber>4</PostNumber>
       </NewPostWrapper>{' '}
-      <NewPostWrapper>
+      <NewPostWrapper display={display}>
         <GiveMoodButton>Give Mood</GiveMoodButton>
         <NewPost>
           Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptates
@@ -87,7 +94,7 @@ const PostCard = () => {
         </NewPost>
         <PostNumber>5</PostNumber>
       </NewPostWrapper>{' '}
-      <NewPostWrapper>
+      <NewPostWrapper display={display}>
         <GiveMoodButton>Give Mood</GiveMoodButton>
         <NewPost>
           Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptates
@@ -97,7 +104,7 @@ const PostCard = () => {
         </NewPost>
         <PostNumber>6</PostNumber>
       </NewPostWrapper>{' '}
-      <NewPostWrapper>
+      <NewPostWrapper display={display}>
         <GiveMoodButton>Give Mood</GiveMoodButton>
         <NewPost>
           Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptates

@@ -57,5 +57,6 @@ export function useC() {
     addUser,
     addAdmin,
     addPost,
+    checkAdmin,
   }
 }
