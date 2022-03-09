@@ -3,7 +3,7 @@ import { Web3Provider } from '@ethersproject/providers'
 import { useWeb3React } from '@web3-react/core'
 import { InjectedConnector } from '@web3-react/injected-connector'
 import { formatEther } from '@ethersproject/units'
-import { Div, Span } from './wallet.styles'
+import { Div, Span, WalletButton } from './wallet.styles'
 
 export const injectedConnector = new InjectedConnector({
   supportedChainIds: [1, 3],
@@ -67,15 +67,15 @@ export function Wallet() {
             {balance === null
               ? 'error'
               : balance
-              ? Math.round(balance * 1e4) / 1e4
+              ? Math.round(balance * 1e2) / 1e2
               : ''}{' '}
-            Eth
+            ETH
           </Span>
           <Span>Account Number: {accountNum}</Span>
         </Div>
       ) : (
         <Div>
-          <button onClick={onClick}>Connect Wallet</button>
+          <WalletButton onClick={onClick}>Connect Wallet</WalletButton>
         </Div>
       )}
     </>

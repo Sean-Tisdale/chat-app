@@ -25,7 +25,20 @@ export function useC() {
       console.error(err, 'error adding admin')
     }
   }
-  const addPost = async () => {}
+
+  const getPostGasEstimate = async (content: string) => {
+    const getGasValue = await contracts?.estimateGas.addPost(content)
+  }
+  const addPost = async (content: string) => {
+    try {
+      const tx = await contracts?.addPost(content as string, {
+        gasLimit: 3400000,
+      })
+      return await tx?.wait()
+    } catch (err) {
+      console.error(err, 'error adding admin')
+    }
+  }
   const postMood = async () => {}
   ///////////////
   // Remove Functions //
@@ -43,5 +56,6 @@ export function useC() {
   return {
     addUser,
     addAdmin,
+    addPost,
   }
 }

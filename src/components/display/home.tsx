@@ -1,8 +1,18 @@
 import React from 'react'
-import { AccountDisplay } from './home.styles'
+import PostCard from '../posts/postCard'
+import { Wallet } from '../user/wallet/wallet'
+import { HomePageWrapper, PostDisplayWrapper } from './home.styles'
 
 const Home = () => {
-  const connected: boolean = false
-  return <AccountDisplay connected={connected}>home component</AccountDisplay>
+  return (
+    <>
+      <HomePageWrapper>
+        <PostDisplayWrapper>
+          <Wallet />
+          <PostCard />
+        </PostDisplayWrapper>
+      </HomePageWrapper>
+    </>
+  )
 }
 export default Home
