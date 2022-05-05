@@ -1,62 +1,69 @@
 import React, { useState } from 'react'
-import {
-  AddUserInputField,
-  AdminPageWrapper,
-  RemoveButton,
-  AddButton,
-  RemoveUserInputField,
-} from './adminPage.styles'
+import { InputField, AdminPageWrapper, Button } from './adminPage.styles'
 import { useC } from '../../lib/hooks/useC'
 
 const AdminPage = () => {
-  const { addUser } = useC()
-  const [addInput, setAddInput] = useState<string>()
-  const [removeInput, setRemoveInput] = useState<string>()
-  // interface HandleChangeProps {
-  // id: string
-  // e: any
-  // }
-  let add: boolean
-  const handleAdd = (e: any) => {
+  const { addUser, checkUser, checkAdmin, addAdmin } = useC()
+  const [addUserInput, setAddUserInput] = useState<string>()
+  const [removeUserInput, setRemoveUserInput] = useState<string>()
+  const [addAdminInput, setAddAdminInput] = useState<string>()
+
+  const handleAddUser = async (e: any) => {
     e.preventDefault()
-    console.log('handleAdd, line 18')
+    setAddUserInput(e.target.value)
+    console.log('handleAddUser, line 18')
+    await addUser(addUserInput)
   }
-  const handleRemove = (e: any) => {
+  const handleRemoveUser = (e: any) => {
     e.preventDefault()
-    console.log('handleRemove, line 22')
+    setRemoveUserInput(e.target.value)
+    console.log('handleRemoveUser, line 22')
+  }
+  const handleAddAdmin = async (e: any) => {
+    e.preventDefault()
+    setAddAdminInput(e.target.value)
+    console.log('handleAddAdmin, line 18', await checkAdmin())
+    await addAdmin(addAdminInput)
   }
   function handleChange(e: any) {
-    // e.preventDefault()
-    // add === true ? setAddInput(e.target.value) : setRemoveInput(e.target.value)
+    e.preventDefault()
+    if (e.target.id === 'user') {
+      setAddUserInput(e.target.value)
+    } else if (e.target.id === 'removeUser') {
+      setRemoveUserInput(e.target.value)
+    } else {
+      setAddAdminInput(e.target.value)
+    }
   }
-  const handleKeyPress = (e: any) => {
-    // if (e.code === 'Enter' && id === '1') {
-    //   console.log('add')
-    // } else if (e.code === 'Enter' && id !== '1') {
-    //   console.log('remove')
-    // }
-  }
-
+  checkAdmin()
   return (
     <AdminPageWrapper>
-      <AddButton onClick={handleAdd}>
+      <Button onClick={handleAddUser}>
         <div>ADD USER</div>
-      </AddButton>
-      <AddUserInputField
+      </Button>
+      <InputField
         placeholder="Add User"
-        // id={add}
-        value={addInput}
+        id="user"
+        value={addUserInput}
         onChange={handleChange}
-        onKeyPress={handleKeyPress}
       />
-      <RemoveButton onClick={handleRemove}>REMOVE USER</RemoveButton>
-      <RemoveUserInputField
+      <Button onClick={handleAddAdmin}>
+        <div>ADD ADMIN</div>
+      </Button>
+      <InputField
+        placeholder="Add Admin"
+        id="admin"
+        value={addAdminInput}
+        onChange={handleChange}
+      />
+      <Button onClick={handleRemoveUser}>REMOVE USER</Button>
+      <InputField
         placeholder="Remove User"
-        value={removeInput}
+        id="removeUser"
+        value={removeUserInput}
         onChange={handleChange}
-        onKeyPress={handleKeyPress}
       />
-      <RemoveButton>REMOVE POST</RemoveButton>
+      <Button>REMOVE POST</Button>
     </AdminPageWrapper>
   )
 }

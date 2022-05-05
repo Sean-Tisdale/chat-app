@@ -6,7 +6,7 @@ export enum NETWORK_TYPES {
   KOVAN = 'KOVAN',
 }
 
-export const defaultNetworkId: number = Number(3)
+export const defaultNetworkId: number = Number(4)
 
 export const chainIdToNetworkType = (chainId: number): NETWORK_TYPES => {
   switch (chainId) {

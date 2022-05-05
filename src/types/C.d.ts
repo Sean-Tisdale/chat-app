@@ -14,6 +14,7 @@ import {
   Contract,
   ContractTransaction,
   Overrides,
+  PayableOverrides,
   CallOverrides,
 } from "@ethersproject/contracts";
 import { BytesLike } from "@ethersproject/bytes";
@@ -185,12 +186,12 @@ export class C extends Contract {
 
     postMood(
       postID: BigNumberish,
-      overrides?: Overrides
+      overrides?: PayableOverrides
     ): Promise<ContractTransaction>;
 
     "postMood(uint256)"(
       postID: BigNumberish,
-      overrides?: Overrides
+      overrides?: PayableOverrides
     ): Promise<ContractTransaction>;
 
     postNum(overrides?: CallOverrides): Promise<[BigNumber]>;
@@ -286,12 +287,12 @@ export class C extends Contract {
 
   postMood(
     postID: BigNumberish,
-    overrides?: Overrides
+    overrides?: PayableOverrides
   ): Promise<ContractTransaction>;
 
   "postMood(uint256)"(
     postID: BigNumberish,
-    overrides?: Overrides
+    overrides?: PayableOverrides
   ): Promise<ContractTransaction>;
 
   postNum(overrides?: CallOverrides): Promise<BigNumber>;
@@ -488,11 +489,14 @@ export class C extends Contract {
 
     "getPostNum()"(overrides?: CallOverrides): Promise<BigNumber>;
 
-    postMood(postID: BigNumberish, overrides?: Overrides): Promise<BigNumber>;
+    postMood(
+      postID: BigNumberish,
+      overrides?: PayableOverrides
+    ): Promise<BigNumber>;
 
     "postMood(uint256)"(
       postID: BigNumberish,
-      overrides?: Overrides
+      overrides?: PayableOverrides
     ): Promise<BigNumber>;
 
     postNum(overrides?: CallOverrides): Promise<BigNumber>;
@@ -595,12 +599,12 @@ export class C extends Contract {
 
     postMood(
       postID: BigNumberish,
-      overrides?: Overrides
+      overrides?: PayableOverrides
     ): Promise<PopulatedTransaction>;
 
     "postMood(uint256)"(
       postID: BigNumberish,
-      overrides?: Overrides
+      overrides?: PayableOverrides
     ): Promise<PopulatedTransaction>;
 
     postNum(overrides?: CallOverrides): Promise<PopulatedTransaction>;

@@ -10,7 +10,7 @@ export const AdminPageWrapper = styled.div`
   justify-content: space-evenly;
   margin-top: 10px;
 `
-export const RemoveButton = styled.button`
+export const Button = styled.button`
   background-color: #ba7eb0;
   border: none;
   font-size: 2em;
@@ -18,20 +18,7 @@ export const RemoveButton = styled.button`
   color: white;
   cursor: pointer;
 `
-export const AddButton = styled.button`
-  background-color: #ba7eb0;
-  border: none;
-  font-size: 2em;
-  height: 20vh;
-  color: white;
-  cursor: pointer;
-`
-export const AddUserInputField = styled.textarea`
-  height: 3vh;
-  resize: none;
-  outline: none;
-`
-export const RemoveUserInputField = styled.textarea`
+export const InputField = styled.textarea`
   height: 3vh;
   resize: none;
   outline: none;

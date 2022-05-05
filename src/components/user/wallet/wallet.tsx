@@ -6,7 +6,7 @@ import { formatEther } from '@ethersproject/units'
 import { Div, Span, WalletButton } from './wallet.styles'
 
 export const injectedConnector = new InjectedConnector({
-  supportedChainIds: [1, 3],
+  supportedChainIds: [1, 4],
 })
 
 export function Wallet() {
@@ -14,7 +14,7 @@ export function Wallet() {
     useWeb3React<Web3Provider>()
   const [accountNum, setAccountNum] = useState<string>(
     account
-      ? `${account.substring(0, 6)}...${account.substring(account.length - 4)}`
+      ? `${account.substring(0, 4)}...${account.substring(account.length - 4)}`
       : ''
   )
   const [balance, setBalance] = useState<any>(null)

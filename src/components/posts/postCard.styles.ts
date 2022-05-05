@@ -34,24 +34,37 @@ export const NewPostWrapper = styled.div`
   border: solid 2px black;
   height: 30vh;
   width: 40vw;
-  border-radius: 35px;
+  border-radius: 15px;
   display: flex;
+  flex-direction: row;
   display: ${(props: { display: any }) => (props.display ? '' : 'none')};
 `
 export const GiveMoodButton = styled.div`
-  cursor: pointer;
+  cursor: ${(props: { home: boolean }) => (props.home ? 'pointer' : 'default')};
   background-color: #c4c4c4;
-  border: black solid 3px;
-  border-radius: 50%;
+  border-radius: 13px 0% 0% 13px;
   width: 50px;
-  height: 50px;
+  height: 94.7%;
   padding: 5px;
   font-size: 1em;
   text-align: center;
   font-weight: bold;
-  color: #1a2296;
+  color: ${(props: { home: boolean }) => (props.home ? '#1a2296' : 'black')};
 `
-export const NewPost = styled.div`
+export const PostAndMoodWrapper = styled.div`
+  border-bottom: solid black 1px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+`
+export const PostAuthor = styled.div`
+  border-left: solid black 2px;
+  width: 50%;
+`
+export const MoodDisplay = styled.div`
+  width: 50%;
+`
+export const ContentWrapper = styled.div`
   font-size: 1.2em;
   text-align: center;
   font-weight: bold;
@@ -59,16 +72,26 @@ export const NewPost = styled.div`
   height: 100%;
   overflow: hidden;
   line-height: 30px;
-  margin-top: 10px;
+  border: solid 2px black;
+  border-top: none;
+  border-bottom: none;
+`
+export const NewPostContent = styled.div`
+  height: 83%;
+  width: 100%;
+  border: solid 1px black;
+  line-height: 60px;
+  display: inline-block;
+  vertical-align: middle;
 `
 export const PostNumber = styled.div`
-  border: black solid 3px;
-  border-radius: 50%;
+  border-radius: 0% 13px 13px 0%;
   background-color: #c4c4c4;
   width: 50px;
-  height: 50px;
+  height: 94.5%;
   font-size: 2em;
   padding: 5px;
   text-align: center;
   font-weight: bold;
+  cursor: pointer;
 `
